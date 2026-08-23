@@ -1,0 +1,23 @@
+{
+  "name": "automation_excercise_website_testing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbrajaqa/Automation_Excercise_Website_Testing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mbrajaqa/Automation_Excercise_Website_Testing/issues"
+  },
+  "homepage": "https://github.com/mbrajaqa/Automation_Excercise_Website_Testing#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^26.2.0"
+  }
+}
