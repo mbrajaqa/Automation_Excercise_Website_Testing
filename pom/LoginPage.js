@@ -10,6 +10,7 @@ exports.LoginPage = class LoginPage {
         this.signupName = page.getByTestId('signup-name');
         this.signupEmail = page.getByTestId('signup-email');
         this.signupButton = page.getByTestId('signup-button');
+        this.emailAlreadyExistMessage = page.getByText('Email Address already exist!',{exact: 'true'});
 
 
         this.loginAccountHeading = page.getByText('Login to your account');
@@ -62,7 +63,13 @@ exports.LoginPage = class LoginPage {
     };
 
     async verifyInvalidLoginMessage(){
+
         await expect(this.invalidLoginMessage).toBeVisible();
+    };
+
+    async verifyEmailAlreadyExistMessage(){
+
+        await expect(this.emailAlreadyExistMessage).toBeVisible();
     };
 
 
