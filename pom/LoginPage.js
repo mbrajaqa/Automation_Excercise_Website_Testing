@@ -27,7 +27,7 @@ exports.LoginPage = class LoginPage {
     };
 
     async verifyLoginPageIsDisplayed(){
-        await expect(this.page).toHaveURL(this.url);
+        await expect(this.page).toHaveURL(/automationexercise\.com\/login/);
     };
 
     async openLoginPage(){

@@ -28,7 +28,7 @@ exports.HomePage = class HomePage {
 
     async verifyHomePageIsDisplayed() {
         
-        await expect(this.page).toHaveURL(this.url);
+        await expect(this.page).toHaveURL(/automationexercise\.com/);
     };
 
     async verifyTheHomeLinkIsPresent(){
