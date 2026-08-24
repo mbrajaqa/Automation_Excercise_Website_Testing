@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 exports.LoginPage = class LoginPage {
     constructor (page) {
         this.page = page;
-        this.url = 'https://www.automationexercise.com/login';
+        this.url = 'https://automationexercise.com/login';
         
         //Locators
         this.newUserSignupHeading = page.getByRole('heading', { name: 'New User Signup!' });
@@ -12,22 +12,56 @@ exports.LoginPage = class LoginPage {
         this.signupButton = page.getByTestId('signup-button');
 
 
+        this.loginAccountHeading = page.getByText('Login to your account');
+        this.loginEmail = page.getByTestId('login-email');
+        this.loginPassword = page.getByTestId('login-password');
+        this.loginButton = page.getByTestId('login-button');
+
+
         //Values
         this.newUserSignUpHeadingText = 'New User Signup!';
+        this.loginAccountHeadingText = 'Login to your account';
         
     };
 
-    
+    async verifyLoginPageIsDisplayed(){
+        await this.page.waitForLoadState('networkidle');
+        await expect(this.page).toHaveURL(this.url);
+    };
+
+    async openLoginPage(){
+        await this.page.goto(this.url);
+        await this.page.waitForLoadState('networkidle');
+        await this.verifyLoginPageIsDisplayed();
+    };
 
     async verifyTheNewUserSignUpHeading(){
         await expect(this.newUserSignupHeading).toBeVisible();
         await expect(this.newUserSignupHeading).toContainText(this.newUserSignUpHeadingText);
     };
 
+    async verifyTheLoginAccountHeading(){
+        await expect(this.loginAccountHeading).toBeVisible();
+        await expect(this.loginAccountHeading).toContainText(this.loginAccountHeadingText);
+    };
+
     async signup(name, email){
+        await this.verifyTheNewUserSignUpHeading();
         await this.signupName.fill(name);
         await this.signupEmail.fill(email);
         await this.signupButton.click();
+        await this.page.waitForLoadState('networkidle');
     };
+
+    async login(email, password){
+        await this.verifyTheLoginAccountHeading();
+        await this.loginEmail.fill(email);
+        await this.loginPassword.fill(password);
+        await this.loginButton.click();
+        await this.page.waitForLoadState('networkidle');
+    };
+
+
+    
 
 };

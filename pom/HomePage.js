@@ -10,6 +10,7 @@ exports.HomePage = class HomePage {
         this.signupOrLoginLink = page.getByRole('link', { name: ' Signup / Login' });
         this.loggedInAsUser = page.getByText('Logged in as ');
         this.deleteLink = page.getByRole('link', { name: 'Delete Account' });
+        this.logoutLink = page.getByText('Logout');
 
         //Values
         this.homePageLinkText = 'Home';
@@ -20,6 +21,7 @@ exports.HomePage = class HomePage {
     async openHomePage (){
 
         await this.page.goto(this.url);
+        await this.page.waitForLoadState('networkidle');
         await expect(this.page).toHaveURL(this.url);
 
     };
@@ -37,6 +39,7 @@ exports.HomePage = class HomePage {
     async clickOnSignupOrLoginLink(){
 
         await this.signupOrLoginLink.click();
+        await this.page.waitForLoadState('networkidle');
     };
 
 
@@ -48,7 +51,13 @@ exports.HomePage = class HomePage {
     async deleteAccount(){
         
         await this.deleteLink.click();
+        await this.page.waitForLoadState('networkidle');
     };
+
+    async logout(){
+        await this.logoutLink.click();
+        await this.page.waitForLoadState('networkidle');
+    }
 
 
 };

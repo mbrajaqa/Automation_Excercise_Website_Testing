@@ -1,15 +1,31 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 
-test('test', async ({ page }) => {
-  await page.goto('https://automationexercise.com/');
-  await expect(page.getByRole('link', { name: ' Home' })).toBeVisible();
-  await page.getByRole('link', { name: ' Signup / Login' }).click();
-  await page.locator('form').filter({ hasText: 'Login' }).getByPlaceholder('Email Address').click();
-  await page.locator('form').filter({ hasText: 'Login' }).getByPlaceholder('Email Address').fill('TestUser230820261350@gmail.com');
-  await page.locator('form').filter({ hasText: 'Login' }).getByPlaceholder('Email Address').press('Tab');
-  await page.getByRole('textbox', { name: 'Password' }).fill('12345');
-  await page.getByRole('button', { name: 'Login' }).click();
-  await expect(page.getByText('Logged in as TestUser')).toBeVisible();
-  await page.getByRole('link', { name: ' Delete Account' }).click();
-  await expect(page.getByText('Account Deleted!')).toBeVisible();
+import { HomePage } from '../pom/HomePage';
+import { LoginPage } from '../pom/LoginPage';
+
+import testUser from '../.lib/data/testUser.json';
+
+test.describe('TC02: Login user with correct email and password', ()=>{
+
+
+  test('Login with correct email and password', async({page})=>{
+    const homePage = new HomePage(page);
+    const loginPage = new LoginPage(page);
+
+    await homePage.openHomePage();
+    await homePage.verifyTheHomeLinkIsPresent();
+    await homePage.clickOnSignupOrLoginLink();
+    await loginPage.verifyLoginPageIsDisplayed();
+
+    await loginPage.login(testUser.data[0].valid_email, testUser.data[0].valid_password);
+    await homePage.verifyUserNameInHomePage(testUser.data[0].name);
+    await homePage.logout();
+
+    
+
+  });
+
+
+  
+
 });

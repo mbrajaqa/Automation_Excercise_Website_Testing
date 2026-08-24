@@ -22,5 +22,6 @@ exports.AccountCreatedPage = class AccountCreatedPage {
 
     async clickContinueButton(){
         await this.continueButton.click();
+        await this.page.waitForLoadState('networkidle');
     }
 };
