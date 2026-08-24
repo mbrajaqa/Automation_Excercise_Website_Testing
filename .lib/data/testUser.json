@@ -4,6 +4,11 @@
             "name": "Test User",
             "valid_email" : "testuser24aug26@test.com",
             "valid_password": "testuser"
+        },
+        {
+            "name": "Test User",
+            "invalid_email" : "testuser24aug26@test.com",
+            "invalid_password": "testuser" 
         }
     ]
 }

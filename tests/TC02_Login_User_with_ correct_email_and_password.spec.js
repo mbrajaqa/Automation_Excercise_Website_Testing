@@ -5,10 +5,7 @@ import { LoginPage } from '../pom/LoginPage';
 
 import testUser from '../.lib/data/testUser.json';
 
-test.describe('TC02: Login user with correct email and password', ()=>{
-
-
-  test('Login with correct email and password', async({page})=>{
+test('Login with correct email and password', async({page})=>{
     const homePage = new HomePage(page);
     const loginPage = new LoginPage(page);
 
@@ -18,14 +15,7 @@ test.describe('TC02: Login user with correct email and password', ()=>{
     await loginPage.verifyLoginPageIsDisplayed();
 
     await loginPage.login(testUser.data[0].valid_email, testUser.data[0].valid_password);
-    await homePage.verifyUserNameInHomePage(testUser.data[0].name);
-    await homePage.logout();
+    await homePage.verifyUserNameInHomePage(testUser.data[0].name);   
 
-    
+  });  
 
-  });
-
-
-  
-
-});
