@@ -1,7 +1,7 @@
 const { expect } = require('@playwright/test');
 
 class HomePage {
-    constructor (page) {
+    constructor(page) {
         this.page = page;
         this.url = 'https://www.automationexercise.com/';
 
@@ -11,6 +11,7 @@ class HomePage {
         this.loggedInAsUser = page.getByText('Logged in as ');
         this.deleteLink = page.getByRole('link', { name: 'Delete Account' });
         this.logoutLink = page.getByText('Logout');
+        this.contactUsLink = page.getByText('Contact us');
 
         //Values
         this.homePageLinkText = 'Home';
@@ -19,8 +20,11 @@ class HomePage {
     };
 
     async openHomePage (){
+        await expect(async () => {
+        await this.page.goto(this.url, { waitUntil: 'domcontentloaded' });
+    }).toPass({ timeout: 30_000 });
 
-        await this.page.goto(this.url);
+        //await this.page.goto(this.url);
         //await this.page.waitForLoadState('networkidle');
         await this.verifyHomePageIsDisplayed();
 
@@ -57,6 +61,10 @@ class HomePage {
     async logout(){
         await this.logoutLink.click();
         //await this.page.waitForLoadState('networkidle');
+    };
+
+    async contactUs() {
+        await this.contactUsLink.click();
     }
 
 
