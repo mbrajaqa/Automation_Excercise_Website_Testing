@@ -1,6 +1,6 @@
-import { expect } from '@playwright/test';
+const { expect } = require('@playwright/test');
 
-exports.LoginPage = class LoginPage {
+class LoginPage {
     constructor (page) {
         this.page = page;
         this.url = 'https://automationexercise.com/login';
@@ -76,3 +76,5 @@ exports.LoginPage = class LoginPage {
     
 
 };
+
+module.exports = { LoginPage };
