@@ -26,7 +26,6 @@ exports.LoginPage = class LoginPage {
     };
 
     async verifyLoginPageIsDisplayed(){
-        await this.page.waitForLoadState('networkidle');
         await expect(this.page).toHaveURL(this.url);
     };
 

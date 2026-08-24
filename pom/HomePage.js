@@ -21,8 +21,8 @@ exports.HomePage = class HomePage {
     async openHomePage (){
 
         await this.page.goto(this.url);
-        await this.page.waitForLoadState('networkidle');
-        await expect(this.page).toHaveURL(this.url);
+        //await this.page.waitForLoadState('networkidle');
+        await this.verifyHomePageIsDisplayed();
 
     };
 

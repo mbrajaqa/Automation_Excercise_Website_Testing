@@ -12,8 +12,8 @@ test('Login User with incorrect email and password', async({page})=>{
     await homePage.openHomePage();
     await homePage.verifyTheHomeLinkIsPresent();
     await homePage.clickOnSignupOrLoginLink();
-    await loginPage.verifyLoginPageIsDisplayed();
 
+    await loginPage.verifyLoginPageIsDisplayed();
     await loginPage.login(testUser.data[1].invalid_email, testUser.data[0].valid_password);
     await loginPage.verifyInvalidLoginMessage(); 
 
