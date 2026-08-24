@@ -12,6 +12,7 @@ class HomePage {
         this.deleteLink = page.getByRole('link', { name: 'Delete Account' });
         this.logoutLink = page.getByText('Logout');
         this.contactUsLink = page.getByText('Contact us');
+        this.testCasesLink = page.getByRole('link', { name :  'Test Cases' }).first();
 
         //Values
         this.homePageLinkText = 'Home';
@@ -46,6 +47,9 @@ class HomePage {
         //await this.page.waitForLoadState('networkidle');
     };
 
+    async clickOnTestCasesLink(){
+        await this.testCasesLink.click();
+    }
 
     async verifyUserNameInHomePage(name){
 
