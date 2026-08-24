@@ -31,7 +31,7 @@ exports.LoginPage = class LoginPage {
 
     async openLoginPage(){
         await this.page.goto(this.url);
-        await this.page.waitForLoadState('networkidle');
+        //await this.page.waitForLoadState('networkidle');
         await this.verifyLoginPageIsDisplayed();
     };
 
@@ -50,7 +50,7 @@ exports.LoginPage = class LoginPage {
         await this.signupName.fill(name);
         await this.signupEmail.fill(email);
         await this.signupButton.click();
-        await this.page.waitForLoadState('networkidle');
+        //await this.page.waitForLoadState('networkidle');
     };
 
     async login(email, password){
@@ -58,7 +58,7 @@ exports.LoginPage = class LoginPage {
         await this.loginEmail.fill(email);
         await this.loginPassword.fill(password);
         await this.loginButton.click();
-        await this.page.waitForLoadState('networkidle');
+        //await this.page.waitForLoadState('networkidle');
     };
 
     async verifyInvalidLoginMessage(){

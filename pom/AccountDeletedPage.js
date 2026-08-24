@@ -24,6 +24,6 @@ exports.AccountDeletedPage = class AccountDeletedPage {
     async clickContinueButton(){
 
         await this.continueButton.click();
-        await this.page.waitForLoadState('networkidle');
+        
     }
 };

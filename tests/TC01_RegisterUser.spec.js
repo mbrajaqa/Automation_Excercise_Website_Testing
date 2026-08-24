@@ -23,7 +23,7 @@ test('test', async ({ page }) => {
 
 
   await loginPage.verifyTheNewUserSignUpHeading();
-  await loginPage.signup('TestUser', 'TestUser230820262218@gmail.com');
+  await loginPage.signup('TestUser', `TestUser${Date.now()}@gmail.com`);
 
   await signupPage.selectTitle('Mr.');
   await signupPage.enterPassword('12345');

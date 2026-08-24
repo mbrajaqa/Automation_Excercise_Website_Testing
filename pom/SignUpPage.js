@@ -103,7 +103,7 @@ exports.SignUpPage = class SignUpPage {
 
     async createAccount(){
         await this.createAccountButton.click();
-        await this.page.waitForLoadState('networkidle');
+        //await this.page.waitForLoadState('networkidle');
     };
 
 };

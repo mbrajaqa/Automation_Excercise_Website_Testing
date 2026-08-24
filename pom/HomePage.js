@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 exports.HomePage = class HomePage {
     constructor (page) {
         this.page = page;
-        this.url = 'https://automationexercise.com/';
+        this.url = 'https://www.automationexercise.com/';
 
         //Locators
         this.homePageLink = page.locator('#header');
@@ -39,7 +39,7 @@ exports.HomePage = class HomePage {
     async clickOnSignupOrLoginLink(){
 
         await this.signupOrLoginLink.click();
-        await this.page.waitForLoadState('networkidle');
+        //await this.page.waitForLoadState('networkidle');
     };
 
 
@@ -51,12 +51,12 @@ exports.HomePage = class HomePage {
     async deleteAccount(){
         
         await this.deleteLink.click();
-        await this.page.waitForLoadState('networkidle');
+        //await this.page.waitForLoadState('networkidle');
     };
 
     async logout(){
         await this.logoutLink.click();
-        await this.page.waitForLoadState('networkidle');
+        //await this.page.waitForLoadState('networkidle');
     }
 
 
