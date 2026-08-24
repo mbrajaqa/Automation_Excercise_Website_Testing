@@ -1,11 +1,11 @@
-import { test } from '@playwright/test';
+import {test } from '@playwright/test';
 
 import { HomePage } from '../pom/HomePage';
 import { LoginPage } from '../pom/LoginPage';
 
 import testUser from '../.lib/data/testUser.json';
 
-test('Login with correct email and password', async({page})=>{
+test('Login User with incorrect email and password', async({page})=>{
     const homePage = new HomePage(page);
     const loginPage = new LoginPage(page);
 
@@ -14,7 +14,8 @@ test('Login with correct email and password', async({page})=>{
     await homePage.clickOnSignupOrLoginLink();
     await loginPage.verifyLoginPageIsDisplayed();
 
-    await loginPage.login(testUser.data[0].valid_email, testUser.data[0].valid_password);
-    await homePage.verifyUserNameInHomePage(testUser.data[0].name);   
+    await loginPage.login(testUser.data[1].invalid_email, testUser.data[0].valid_password);
+    await loginPage.verifyInvalidLoginMessage(); 
 
-  });
+});
+

@@ -7,7 +7,7 @@
         },
         {
             "name": "Test User",
-            "invalid_email" : "testuser24aug26@test.com",
+            "invalid_email" : "testuser24aug_26@test.com",
             "invalid_password": "testuser" 
         }
     ]

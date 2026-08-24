@@ -16,6 +16,7 @@ exports.LoginPage = class LoginPage {
         this.loginEmail = page.getByTestId('login-email');
         this.loginPassword = page.getByTestId('login-password');
         this.loginButton = page.getByTestId('login-button');
+        this.invalidLoginMessage = this.page.getByText('Your email or password is incorrect!',{exact: 'true'});
 
 
         //Values
@@ -59,6 +60,10 @@ exports.LoginPage = class LoginPage {
         await this.loginPassword.fill(password);
         await this.loginButton.click();
         await this.page.waitForLoadState('networkidle');
+    };
+
+    async verifyInvalidLoginMessage(){
+        await expect(this.invalidLoginMessage).toBeVisible();
     };
 
 
