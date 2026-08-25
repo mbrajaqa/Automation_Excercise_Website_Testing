@@ -13,6 +13,7 @@ class HomePage {
         this.logoutLink = page.getByText('Logout');
         this.contactUsLink = page.getByText('Contact us');
         this.testCasesLink = page.getByRole('link', { name :  'Test Cases' }).first();
+        this.productsLink = page.getByRole('link', { name: 'Products' })
 
         //Values
         this.homePageLinkText = 'Home';
@@ -49,6 +50,10 @@ class HomePage {
 
     async clickOnTestCasesLink(){
         await this.testCasesLink.click();
+    };
+
+    async clickOnProductsLink(){
+        await this.productsLink.click();
     }
 
     async verifyUserNameInHomePage(name){
