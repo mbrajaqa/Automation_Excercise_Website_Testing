@@ -13,7 +13,12 @@ class HomePage {
         this.logoutLink = page.getByText('Logout');
         this.contactUsLink = page.getByText('Contact us');
         this.testCasesLink = page.getByRole('link', { name :  'Test Cases' }).first();
-        this.productsLink = page.getByRole('link', { name: 'Products' })
+        this.productsLink = page.getByRole('link', { name: 'Products' });
+
+        this.subscriptionHeading = page.getByRole('heading', { name: 'Subscription' });
+        this.subscriptionEmailBox = page.getByPlaceholder('Your email address');
+        this.subscriptionButton = page.locator('#subscribe');
+        this.subscribeSuccess = page.getByText('You have been successfully subscribed!');
 
         //Values
         this.homePageLinkText = 'Home';
@@ -72,7 +77,24 @@ class HomePage {
 
     async contactUs() {
         await this.contactUsLink.click();
-    }
+    };
+
+    async verifySubscriptionHeadingIsDisplayed(){
+
+        await expect(this.subscriptionHeading).toBeVisible();
+        
+    };
+
+    async subscribe (email){
+
+        await this.subscriptionEmailBox.fill(email);
+        await this.subscriptionButton.click();
+        
+    };
+
+    async verifySubscribeSuccessMessageIsDisplayeds(){
+        await expect(this.subscribeSuccess).toBeVisible();
+    };
 
 
 };
