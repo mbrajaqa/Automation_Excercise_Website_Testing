@@ -1,11 +1,22 @@
-import { test, expect } from '@playwright/test';
+const {test } = require ('@playwright/test');
+
+const { HomePage } = require('../pom/HomePage');
+const { CartPage } = require('../pom/CartPage');
 
 test('test', async ({ page }) => {
-  await page.goto('https://automationexercise.com/');
-  await expect(page.getByRole('link', { name: ' Home' })).toBeVisible();
-  await page.getByRole('link', { name: ' Cart' }).click();
-  await page.getByRole('textbox', { name: 'Your email address' }).click();
-  await page.getByRole('textbox', { name: 'Your email address' }).fill('abc@gm.com');
-  await page.locator('#subscribe').click();
-  await expect(page.locator('#success-subscribe')).toContainText('You have been successfully subscribed!');
+
+  const homePage = new HomePage(page);
+  const cartPage = new CartPage(page);
+  const email = 'mano@gmail.com';
+
+  await homePage.openHomePage();
+  await homePage.verifyHomePageIsDisplayed();
+  await homePage.clickOnCartLink();
+
+  await cartPage.verifySubscriptionHeadingIsDisplayed();
+  await cartPage.subscribe(email);
+  await cartPage.verifySubscribeSuccessMessageIsDisplayed();
+
+
+
 });

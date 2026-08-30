@@ -12,6 +12,6 @@ test('test', async ({ page }) => {
 
   await homePage.verifySubscriptionHeadingIsDisplayed();
   await homePage.subscribe(email);
-  await homePage.verifySubscribeSuccessMessageIsDisplayeds();
+  await homePage.verifySubscribeSuccessMessageIsDisplayed();
 
 });

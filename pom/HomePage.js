@@ -14,6 +14,7 @@ class HomePage {
         this.contactUsLink = page.getByText('Contact us');
         this.testCasesLink = page.getByRole('link', { name :  'Test Cases' }).first();
         this.productsLink = page.getByRole('link', { name: 'Products' });
+        this.cartLink = page.getByText('Cart', { exact: true });
 
         this.subscriptionHeading = page.getByRole('heading', { name: 'Subscription' });
         this.subscriptionEmailBox = page.getByPlaceholder('Your email address');
@@ -57,7 +58,11 @@ class HomePage {
 
     async clickOnProductsLink(){
         await this.productsLink.click();
-    }
+    };
+
+    async clickOnCartLink(){
+        await this.cartLink.click();
+    };
 
     async verifyUserNameInHomePage(name){
 
@@ -92,7 +97,7 @@ class HomePage {
         
     };
 
-    async verifySubscribeSuccessMessageIsDisplayeds(){
+    async verifySubscribeSuccessMessageIsDisplayed(){
         await expect(this.subscribeSuccess).toBeVisible();
     };
 
