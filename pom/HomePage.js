@@ -22,9 +22,7 @@ class HomePage {
     };
 
     async openHomePage (){
-        await expect(async () => {
-        await this.page.goto(this.url, { waitUntil: 'domcontentloaded' });
-    }).toPass({ timeout: 30_000 });
+        await this.page.goto(this.url);
 
         //await this.page.goto(this.url);
         //await this.page.waitForLoadState('networkidle');

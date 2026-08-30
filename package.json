@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js"
+    "test" : "npx playwright test",
+    "test:report" : "npx playwright test && npx playwright show-report"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,6 @@
     "@types/node": "^26.2.0"
   },
   "dependencies": {
-    "@cucumber/cucumber": "^13.2.1"
+    
   }
 }

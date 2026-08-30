@@ -1,8 +1,0 @@
-{
-    "default": {
-        "paths": ["tests/features"],
-        "dryRun": false,
-        "publishQuiet" : true,
-        "require" : ["tests/step_definations/*.js", "./hooks/*.js"]
-    }
-}
